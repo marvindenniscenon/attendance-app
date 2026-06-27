@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>Roster</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-200 p-6">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Roster</h1>
+    <a href="/download-csv" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm">DL CSV</a>
+  </div>
+
+  <table id="rosterTable" class="w-full text-sm">
+    <thead class="bg-gray-800">
+      <tr>
+        <th>LILO NAME</th>
+        <th>TEAM LEADER</th>
+        <th>21 Sun</th><th>22 Mon</th><th>23 Tue</th><th>24 Wed</th><th>25 Thu</th><th>26 Fri</th><th>27 Sat</th>
+        <th>Tardiness</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr class="border-b border-gray-700 hover:bg-gray-800">
+        <td>{{ row.name }}</td>
+        <td>{{ row.team_lead }}</td>
+        <td>{{ row.jun21 }}</td><td>{{ row.jun22 }}</td><td>{{ row.jun23 }}</td><td>{{ row.jun24 }}</td><td>{{ row.jun25 }}</td><td>{{ row.jun26 }}</td><td>{{ row.jun27 }}</td>
+        <td>{{ row.tardiness }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<script>
+$(document).ready(function() {
+    $('#rosterTable').DataTable({"pageLength": 25, "responsive": true});
+});
+</script>
+</body>
+</html>
